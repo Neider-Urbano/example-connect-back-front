@@ -1,6 +1,7 @@
 import express from "express";
 import connectDb from "./db.js";
 import cors from "cors";
+import axios from "axios";
 import UserModel from "./users.js";
 const app = express();
 const port = 3000;
@@ -15,9 +16,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/cats", (req, res) => {
-  fetch("https://api.thecatapi.com/v1/images/search?limit=10")
-    .then((response) => response.json())
-    .then((data) => res.status(200).send(data))
+  axios
+    .get("https://api.thecatapi.com/v1/images/search?limit=10")
+    .then((data) => {
+      res.status(200).send(data.data);
+    })
     .catch((err) => res.status(200).send(err));
 });
 
