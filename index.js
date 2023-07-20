@@ -1,7 +1,7 @@
 import express from "express";
-import connectDb from "./db.js";
+// import connectDb from "./db.js";
 import cors from "cors";
-import UserModel from "./users.js";
+// import UserModel from "./users.js";
 const app = express();
 const port = 3000;
 
@@ -20,18 +20,18 @@ app.get("/cats", (req, res) => {
     .catch((err) => res.status(200).send(err));
 });
 
-app.get("/users", async (req, res) => {
-  const users = await UserModel.find();
-  res.status(200).send(users);
-});
+// app.get("/users", async (req, res) => {
+//   const users = await UserModel.find();
+//   res.status(200).send(users);
+// });
 
 app.listen(port, () => {
-  connectDb()
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  // connectDb()
+  //   .then((data) => {
+  //     console.log(data);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
   console.log(`App listening on port ${port}`);
 });
