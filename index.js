@@ -6,6 +6,7 @@ const app = express();
 const port = 3000;
 
 app.use(cors());
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res
@@ -20,18 +21,18 @@ app.get("/cats", (req, res) => {
     .catch((err) => res.status(200).send(err));
 });
 
-// app.get("/users", async (req, res) => {
-//   const users = await UserModel.find();
-//   res.status(200).send(users);
-// });
+app.get("/users", async (req, res) => {
+  const users = await UserModel.find();
+  res.status(200).send(users);
+});
 
 app.listen(port, () => {
-  // connectDb()
-  //   .then((data) => {
-  //     console.log(data);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
+  connectDb()
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   console.log(`App listening on port ${port}`);
 });
