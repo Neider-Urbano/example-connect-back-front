@@ -22,8 +22,12 @@ app.get("/cats", (req, res) => {
 });
 
 app.get("/users", async (req, res) => {
-  const users = await UserModel.find();
-  res.status(200).send(users);
+  try {
+    const users = await UserModel.find();
+    res.status(200).send(users);
+  } catch (error) {
+    res.status(500).send(error);
+  }
 });
 
 app.listen(port, () => {
