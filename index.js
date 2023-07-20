@@ -24,10 +24,11 @@ app.get("/cats", (req, res) => {
     .catch((err) => res.status(200).send(err));
 });
 
-app.get("/users", async (req, res) => {
+app.get("/users", (req, res) => {
   try {
-    const users = await UserModel.find();
-    res.status(200).send(users);
+    setTimeout(async () => {
+      res.status(200).send(await UserModel.find());
+    }, [1000]);
   } catch (error) {
     res.status(500).send(error);
   }
