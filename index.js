@@ -5,7 +5,6 @@ import UserModel from "./users.js";
 const app = express();
 const port = 3000;
 
-//Install Cors politics
 app.use(cors());
 
 app.get("/", (req, res) => {
