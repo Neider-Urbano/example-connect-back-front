@@ -26,8 +26,9 @@ app.get("/cats", (req, res) => {
 
 app.get("/users", async (req, res) => {
   try {
-    const users = await UserModel.find();
-    res.status(200).send(users);
+    setTimeout(() => {
+      res.status(200).send(UserModel.find());
+    }, [2000]);
   } catch (error) {
     res.status(500).send(error);
   }
