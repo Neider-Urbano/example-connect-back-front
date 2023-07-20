@@ -1,7 +1,7 @@
 import express from "express";
-// import connectDb from "./db.js";
+import connectDb from "./db.js";
 import cors from "cors";
-// import UserModel from "./users.js";
+import UserModel from "./users.js";
 const app = express();
 const port = 3000;
 
