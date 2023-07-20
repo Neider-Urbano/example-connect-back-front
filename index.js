@@ -9,6 +9,14 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
+connectDb()
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
 app.get("/", (req, res) => {
   res
     .status(200)
@@ -33,12 +41,5 @@ app.get("/users", async (req, res) => {
 });
 
 app.listen(port, () => {
-  connectDb()
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
   console.log(`App listening on port ${port}`);
 });
